@@ -8,7 +8,7 @@ class KMeansCluster():
     model = None
     mae = 0
 
-    default_params = {'n_clusters':2, 'random_state':0}
+    default_params = {'n_clusters': 4, 'n_init': 12, 'n_jobs': -1}
 
     def __init__(self, params=default_params):
         self.params = params

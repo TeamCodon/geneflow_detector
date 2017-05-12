@@ -17,7 +17,7 @@ def main():
     num_clusters = 4
     dir_path = "F:\SpaceApp\genex\geneflow_detector\data_sets"
     file_name = "falcon_sightings.csv"
-    f = open('falcon_geneflow.js', 'w')
+    f = open(file_name, 'w')
     f.write("var falconOcPoints = [")
     geo_data = utils.load_full_dataset(dir_path, file_name)
 
@@ -43,9 +43,6 @@ def main():
             continue
         cluster(chunk, f)
         prv_i = i
-        # cnt += 1
-        # if cnt == 1:
-        #     break
     f.write("];")
     f.close()
 

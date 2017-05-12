@@ -1,19 +1,25 @@
 import pandas as pd
 
 from enum import IntEnum
-from sklearn_pandas import DataFrameMapper
-from sklearn import preprocessing
 
 
-def load_full_dataset(data_set_file):
-    geo_df = pd.read_csv(data_set_file+"\\falcon-tracked.csv")
+def load_full_dataset(data_set_file, file_name):
+    geo_df = pd.read_csv(data_set_file+"\\"+file_name)
 
     geo_df['timestamp'] = pd.to_datetime(geo_df['timestamp'])
 
-    climate_df = pd.read_csv(data_set_file+"\\falcon-tracked-temp.csv")
+    # climate_df = pd.read_csv(data_set_file+"\\falcon-tracked-temp.csv")
 
     Logger.info("Loaded data sets: all data \n")
-    return geo_df, climate_df
+    return geo_df
+
+
+def preprocess_full_dataset(data_set_file, file_name):
+    geo_df = pd.read_csv(data_set_file+"\\falcon_geneflow_final.csv")
+
+    geo_df.columns = ['timestamp','location-long', 'location-lat', 'radious', 'cluster_no']
+
+    geo_df.to_csv(data_set_file+"\\"+file_name, index=False)
 
 
 class LogLevel(IntEnum):
